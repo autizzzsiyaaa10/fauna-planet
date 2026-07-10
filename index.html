@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌸 Fauna Planet: Rare Facts 🌸</title>
+    <title>🌸 Fauna Planet: 50 Rare Animals 🌸</title>
     <style>
         :root {
             --bg-color: #fcf8f2;
@@ -136,7 +136,7 @@
             display: flex;
             flex-direction: column;
             padding: 25px;
-            min-height: 200px;
+            min-height: 220px;
             justify-content: space-between;
         }
 
@@ -167,13 +167,13 @@
         }
 
         .card h2 {
-            font-size: 1.7rem;
+            font-size: 1.6rem;
             margin-bottom: 10px;
         }
 
         .card p {
             color: var(--text-sub);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .modal {
@@ -257,9 +257,9 @@
 
     <header>
         <h1>🌸 FAUNA PLANET 🌸</h1>
-        <p>✨ A magical encyclopedia of rare creatures & secret facts! ✨</p>
+        <p>✨ Welcome to the Ultimate Vault of 50 Ultra-Rare & Unique Species! ✨</p>
         <div class="controls">
-            <input type="text" id="search-bar" placeholder="Search rare animals..." onkeyup="filterAnimals()">
+            <input type="text" id="search-bar" placeholder="Type to filter 50 species..." onkeyup="filterAnimals()">
             <button class="btn-theme" onclick="toggleTheme()">🌓 Change Skyline</button>
         </div>
     </header>
@@ -267,106 +267,128 @@
     <div class="container">
         <div class="grid" id="animal-grid">
             
-            <div class="card c-pink" onclick="openModal('Axolotl 🇲🇽', 'Amphibian', 'This sweet water dragon keeps its cute feathery gills its whole life long and never grows up.', 'Axolotls are real life superheroes! They can completely regrow whole limbs, eyes, and even parts of their brain perfectly without any scarring!')">
-                <div>
-                    <span class="badge">Amphibian</span>
-                    <h2>Axolotl</h2>
-                    <p>A bubbly little water dragon with legendary healing capabilities.</p>
-                </div>
+            <div class="card c-pink" onclick="openModal('Axolotl', 'Amphibian', 'A cute aquatic salamander that keeps its baby features forever.', 'They can completely heal and rebuild limbs, eyes, and even sections of their brain without any scarring!')">
+                <div><span class="badge">Amphibian</span><h2>Axolotl</h2><p>The smiling underwater water dragon with healing powers.</p></div>
             </div>
 
-            <div class="card c-blue" onclick="openModal('Snow Leopard 🏔️', 'Mammal', 'These big beautiful cats wander around the highest frozen mountain peaks of Asia.', 'Snow leopards cannot roar at all! Instead, they make a wonderful, happy puffing noise through their nose called a chuff.')">
-                <div>
-                    <span class="badge">Mammal</span>
-                    <h2>Snow Leopard</h2>
-                    <p>The soft fluffy master of camouflage living up in the cold clouds.</p>
-                </div>
+            <div class="card c-blue" onclick="openModal('Snow Leopard', 'Mammal', 'An elusive big cat native to the freezing mountain ranges of Central Asia.', 'They cannot roar! Instead, they make a gentle puffing nose called a chuff.')">
+                <div><span class="badge">Mammal</span><h2>Snow Leopard</h2><p>The silent ghostly hunter of the high snowy cliffs.</p></div>
             </div>
 
-            <div class="card c-green" onclick="openModal('Peregrine Falcon 🦅', 'Bird', 'The absolute speed champion of planet Earth, zooming like a living jet plane.', 'When executing its hunting dive from high in the sky, a falcon can fly faster than 200 mph (320 km/h) — making it way faster than a real racecar!')">
-                <div>
-                    <span class="badge">Bird</span>
-                    <h2>Peregrine Falcon</h2>
-                    <p>A lightning-fast feathery explorer zooming through the skies.</p>
-                </div>
+            <div class="card c-green" onclick="openModal('Peregrine Falcon', 'Bird', 'The absolute fastest creature in the animal kingdom.', 'During a high altitude dive, they reach spectacular speeds over 200 mph!')">
+                <div><span class="badge">Bird</span><h2>Peregrine Falcon</h2><p>The sky racing jet that flies faster than race cars.</p></div>
             </div>
 
-            <div class="card c-purple" onclick="openModal('Mimic Octopus 🐙', 'Marine Life', 'An incredibly smart ocean creature that completely impersonates other sea shapes to scare away predators.', 'It can switch its skin color, texture, and body movement to instantly look like toxic sea snakes, lionfish, or flatfish!')">
-                <div>
-                    <span class="badge">Marine Life</span>
-                    <h2>Mimic Octopus</h2>
-                    <p>The ocean's magical shifting master of disguise.</p>
-                </div>
+            <div class="card c-purple" onclick="openModal('Mimic Octopus', 'Marine Life', 'An incredibly intelligent ocean cephalopod that tricks predators.', 'It changes shape, color, and behavior to pose as poisonous sea snakes or lionfish!')">
+                <div><span class="badge">Marine Life</span><h2>Mimic Octopus</h2><p>The master shape-shifter of the tropical ocean floors.</p></div>
             </div>
 
-            <div class="card c-orange" onclick="openModal('Red Panda 🦊', 'Mammal', 'These cinnamon-colored sweethearts live high up in the rainy bamboo forests.', 'Red pandas use their huge, fluffy, ringed tails like cozy winter blankets to wrap around their faces and stay warm on freezing nights!')">
-                <div>
-                    <span class="badge">Mammal</span>
-                    <h2>Red Panda</h2>
-                    <p>A beautiful bamboo-munching acrobat with a fluffy ringed tail.</p>
-                </div>
+            <div class="card c-orange" onclick="openModal('Red Panda', 'Mammal', 'A small, tree-dwelling mammal living in the high rainy Himalayas.', 'They use their giant fluffy striped tails as built-in blankets to stay warm.')">
+                <div><span class="badge">Mammal</span><h2>Red Panda</h2><p>A beautiful bamboo-loving acrobat with a cozy tail.</p></div>
             </div>
 
-            <div class="card c-yellow" onclick="openModal('Quokka 🐨', 'Marsupial', 'Hailing from tiny islands in Western Australia, these cheerful creatures love exploring and meeting human friends.', 'Quokkas look like they are constantly smiling because their unique jaw and facial structure naturally curves upward!')">
-                <div>
-                    <span class="badge">Marsupial</span>
-                    <h2>Quokka</h2>
-                    <p>The legendary tiny animal known globally for its radiant smile.</p>
-                </div>
+            <div class="card c-yellow" onclick="openModal('Quokka', 'Marsupial', 'A small nocturnal marsupial living on isolated Western Australian islands.', 'Their facial muscles give them a permanent, cheerful smile that made them famous.')">
+                <div><span class="badge">Marsupial</span><h2>Quokka</h2><p>The world\'s happiest animal known for its glowing smile.</p></div>
             </div>
 
-        </div>
-    </div>
-
-    <div class="modal" id="factModal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeModal(null, true)">🌟</button>
-            <span class="badge" id="modal-badge">Class</span>
-            <h2 id="modal-title">Animal Name</h2>
-            <p id="modal-desc">Description goes here.</p>
-            <div class="modal-fact-box">
-                <strong>🌈 Mind-Blowing Magic Fact:</strong>
-                <p id="modal-fact">Fun fact goes here.</p>
+            <div class="card c-green" onclick="openModal('Kakapo', 'Bird', 'The world\'s only flightless, heaviest owl-like parrot from New Zealand.', 'They smell intensely sweet, almost like honey, which unfortunately alerts predators.')">
+                <div><span class="badge">Bird</span><h2>Kakapo</h2><p>A rare, heavy, nocturnal green parrot that cannot fly.</p></div>
             </div>
-        </div>
-    </div>
 
-    <script>
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        }
+            <div class="card c-blue" onclick="openModal('Platypus', 'Mammal', 'An bizarre egg-laying mammal native to eastern Australia.', 'They have glow-in-the-dark biofluorescent fur under UV light and use electricity to hunt!')">
+                <div><span class="badge">Mammal</span><h2>Platypus</h2><p>The duck-billed, beaver-tailed creature that defies nature.</p></div>
+            </div>
 
-        function filterAnimals() {
-            const query = document.getElementById('search-bar').value.toLowerCase();
-            const cards = document.getElementsByClassName('card');
-            for (let i = 0; i < cards.length; i++) {
-                const title = cards[i].querySelector('h2').innerText.toLowerCase();
-                if (title.includes(query)) {
-                    cards[i].style.display = "flex";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-        }
+            <div class="card c-purple" onclick="openModal('Narwhal', 'Marine Life', 'An Arctic whale species famous for its spiral horn protrusion.', 'The horn is actually a giant, flexible tooth filled with millions of nerve endings!')">
+                <div><span class="badge">Marine Life</span><h2>Narwhal</h2><p>The legendary unicorn whale navigating frozen icy seas.</p></div>
+            </div>
 
-        function openModal(name, classification, desc, fact) {
-            document.getElementById('modal-title').innerText = name;
-            document.getElementById('modal-badge').innerText = classification;
-            document.getElementById('modal-desc').innerText = desc;
-            document.getElementById('modal-fact').innerText = fact;
-            document.getElementById('factModal').classList.add('active');
-        }
+            <div class="card c-orange" onclick="openModal('Pangolin', 'Mammal', 'The only mammal in the world fully covered in protective keratin armor.', 'When scared, they roll into an impenetrable ball that even lions cannot bite through!')">
+                <div><span class="badge">Mammal</span><h2>Pangolin</h2><p>The scaly armored artichoke of the deep forests.</p></div>
+            </div>
 
-        function closeModal(event, force = false) {
-            if (force || (event && event.target.classList.contains('modal'))) {
-                document.getElementById('factModal').classList.remove('active');
-            }
-        }
-    </script>
-</body>
-</html>
+            <div class="card c-yellow" onclick="openModal('Okapi', 'Mammal', 'A mysterious forest creature that looks like a zebra mix from central Africa.', 'They are actually the only living relative of the giraffe and have blue tongues!')">
+                <div><span class="badge">Mammal</span><h2>Okapi</h2><p>The striped velvet ghost animal of the Congo rainforest.</p></div>
+            </div>
+
+            <div class="card c-pink" onclick="openModal('Aye-Aye', 'Lemur', 'A strange looking nocturnal lemur only found in Madagascar.', 'It has a massive, skeletal middle finger used to tap on trees and pull out bugs.')">
+                <div><span class="badge">Lemur</span><h2>Aye-Aye</h2><p>A quirky forest lemur with a magical tapping finger.</p></div>
+            </div>
+
+            <div class="card c-blue" onclick="openModal('Blue Dragon Snail', 'Marine Life', 'A beautiful, floating shell-less sea slug drifting on surface waves.', 'They consume venomous jellyfish, steal their stingers, and use them against enemies!')">
+                <div><span class="badge">Marine Life</span><h2>Blue Dragon</h2><p>A tiny sea slug that fights with stolen jellyfish venom.</p></div>
+            </div>
+
+            <div class="card c-orange" onclick="openModal('Saiga Antelope', 'Mammal', 'An ancient antelope living on the cold dry Eurasian steppes.', 'Its huge, floppy nose filters out summer dust and warms up freezing winter air!')">
+                <div><span class="badge">Mammal</span><h2>Saiga Antelope</h2><p>An ice-age survivor with a built-in air filter nose.</p></div>
+            </div>
+
+            <div class="card c-green" onclick="openModal('Shoebill Stork', 'Bird', 'A giant pre-historic looking bird inhabiting East African swamps.', 'They stand completely motionless for hours and make loud machine-gun sounds with their bills.')">
+                <div><span class="badge">Bird</span><h2>Shoebill Stork</h2><p>A majestic dinosaur-like bird with a massive shoe beak.</p></div>
+            </div>
+
+            <div class="card c-yellow" onclick="openModal('Tree Kangaroo', 'Marsupial', 'A furry marsupial adapted to living high up in the canopy of New Guinea.', 'Unlike ground kangaroos, they can move their hind legs independently to climb trees.')">
+                <div><span class="badge">Marsupial</span><h2>Tree Kangaroo</h2><p>A cute, tree-climbing relative of the classic kangaroo.</p></div>
+            </div>
+
+            <div class="card c-pink" onclick="openModal('Blobfish', 'Marine Life', 'A deep sea fish that looks completely normal underwater.', 'Without water pressure keeping it together, its jelly body collapses into a sad melt!')">
+                <div><span class="badge">Marine Life</span><h2>Blobfish</h2><p>The gooey deep-sea fish that melts when brought to the surface.</p></div>
+            </div>
+
+            <div class="card c-orange" onclick="openModal('Fennec Fox', 'Mammal', 'The smallest fox species in the world, specialized for the Sahara desert.', 'Their massive ears radiate body heat away to keep them cool in extreme sun!')">
+                <div><span class="badge">Mammal</span><h2>Fennec Fox</h2><p>A pocket-sized desert explorer with giant satellite ears.</p></div>
+            </div>
+
+            <div class="card c-green" onclick="openModal('Glass Frog', 'Amphibian', 'A tiny rainforest frog with entirely translucent skin on its belly.', 'You can look straight through its chest and see its tiny beating red heart!')">
+                <div><span class="badge">Amphibian</span><h2>Glass Frog</h2><p>A see-through amphibian with a visible crystal heart.</p></div>
+            </div>
+
+            <div class="card c-purple" onclick="openModal('Leafy Seadragon', 'Marine Life', 'A marine fish relative of the seahorse found around southern Australia.', 'None of its leaf appendages are fins! They are purely meant for perfect camouflage.')">
+                <div><span class="badge">Marine Life</span><h2>Leafy Seadragon</h2><p>A ocean dancer disguised as floating marine seaweed.</p></div>
+            </div>
+
+            <div class="card c-yellow" onclick="openModal('Thorny Devil', 'Reptile', 'A spiked lizard specialized for harsh Australian deserts.', 'It drinks water using its feet! Skin grooves pull desert moisture straight to its mouth.')">
+                <div><span class="badge">Reptile</span><h2>Thorny Devil</h2><p>A spiky desert lizard that drinks through its own skin.</p></div>
+            </div>
+
+            <div class="card c-orange" onclick="openModal('Sun Bear', 'Mammal', 'The smallest bear species on Earth, living in Southeast Asian tropical forests.', 'They have an incredibly long tongue used to easily pull honey from bee nests!')">
+                <div><span class="badge">Mammal</span><h2>Sun Bear</h2><p>The pocket bear of the forest with a super long tongue.</p></div>
+            </div>
+
+            <div class="card c-purple" onclick="openModal('Leaf-Tailed Gecko', 'Reptile', 'An expert camouflage master lizard found in Madagascar.', 'Its body looks like a rotting brown leaf, complete with tiny fake insect holes!')">
+                <div><span class="badge">Reptile</span><h2>Leaf-Tailed Gecko</h2><p>A nocturnal gecko that looks exactly like a crunchy dry leaf.</p></div>
+            </div>
+
+            <div class="card c-pink" onclick="openModal('Sea Bunny', 'Marine Life', 'A fluffy looking species of sea slug found in the Indo-Pacific ocean.', 'The bunny ears are actually sensory organs that taste and smell the ocean water!')">
+                <div><span class="badge">Marine Life</span><h2>Sea Bunny</h2><p>The fluffiest little underwater slug that looks like a rabbit.</p></div>
+            </div>
+
+            <div class="card c-orange" onclick="openModal('Maned Wolf', 'Mammal', 'The tallest wild canine on Earth, native to South American grasslands.', 'They look like a fox on stilts, but they are an entirely unique animal group!')">
+                <div><span class="badge">Mammal</span><h2>Maned Wolf</h2><p>A majestic long-legged canine roaming the golden savannas.</p></div>
+            </div>
+
+            <div class="card c-blue" onclick="openModal('Spider Crab', 'Marine Life', 'A giant ocean arthropod dwelling in deep waters off Japan.', 'Their leg span can reach a terrifying 12 feet from tip to tip!')">
+                <div><span class="badge">Marine Life</span><h2>Spider Crab</h2><p>The absolute giant crab king of the deep ocean trenches.</p></div>
+            </div>
+
+            <div class="card c-yellow" onclick="openModal('Slow Loris', 'Mammal', 'A cautious nocturnal primate living in deep Asian rainforests.', 'They are the world\'s only venomous primate! They lick toxic glands on their elbows.')">
+                <div><span class="badge">Mammal</span><h2>Slow Loris</h2><p>A big-eyed nocturnal tree baby with a hidden venomous bite.</p></div>
+            </div>
+
+            <div class="card c-green" onclick="openModal('Secretary Bird', 'Bird', 'A large, elegant bird of prey marching across sub-Saharan Africa.', 'They hunt venomous snakes on the ground by stomping on them with stamping force!')">
+                <div><span class="badge">Bird</span><h2>Secretary Bird</h2><p>An elegant, long-legged bird of prey wearing fake eyelashes.</p></div>
+            </div>
+
+            <div class="card c-orange" onclick="openModal('Gerenuk', 'Mammal', 'A long-necked antelope native to dry African scrublands.', 'They stand completely straight up on their hind legs to eat tall acacia leaves!')">
+                <div><span class="badge">Mammal</span><h2>Gerenuk</h2><p>The giraffe-gazelle that walks upright like a human to eat.</p></div>
+            </div>
+
+            <div class="card c-pink" onclick="openModal('Fairy Armadillo', 'Mammal', 'The smallest armadillo in existence, found in central Argentina.', 'It has a soft pink shell and can dig itself completely into sand in seconds!')">
+                <div><span class="badge">Mammal</span><h2>Fairy Armadillo</h2><p>A tiny, subterranean pink explorer with a rose shell.</p></div>
+            </div>
+
+            <div class="card c-blue" onclick="openModal('Vampire Deer', 'Mammal', 'The popular name for Water Deer native to China and Korea.', 'Instead of growing standard antlers, the males grow long saber-like fangs!')">
+                <div><span class="badge">Mammal</span><h2>Vampire Deer</h2><p>A little swamp deer that grows long fangs instead of antlers.</p></div>
+            </div>
+
+            <div cl
