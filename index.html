@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Fauna Planet: The Whimsical Menagerie ✨</title>
+    <title>Fauna Planet</title>
     <style>
-        /* Pastel Storybook Palette */
         :root {
-            --bg-color: #fcf8f2; /* Soft warm cream */
-            --header-bg: linear-gradient(135deg, #ffd3b6, #ffaaa5, #dcedc1); /* Pastel sunset rainbow */
-            --text-main: #4a3f35; /* Soft cozy brown instead of harsh black */
+            --bg-color: #fcf8f2;
+            --header-bg: linear-gradient(135deg, #ffd3b6, #ffaaa5, #dcedc1);
+            --text-main: #4a3f35;
             --text-sub: #7a6e67;
             --search-bg: #ffffff;
             --modal-overlay: rgba(74, 63, 53, 0.4);
-            
-            /* Card Specific Pastels */
             --pastel-pink: #ffebef;
             --pastel-blue: #e3f2fd;
             --pastel-green: #e8f5e9;
@@ -24,12 +21,11 @@
         }
 
         [data-theme="dark"] {
-            --bg-color: #2d242e; /* Cozy twilight purple */
+            --bg-color: #2d242e;
             --header-bg: linear-gradient(135deg, #4831d4, #cc5a71, #f9a826);
             --text-main: #fcf8f2;
             --text-sub: #d1c7bd;
             --search-bg: #3d313e;
-            
             --pastel-pink: #4a343c;
             --pastel-blue: #2c3e50;
             --pastel-green: #27382b;
@@ -46,32 +42,31 @@
         }
 
         body {
-            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Fredoka One', sans-serif;
+            font-family: "Comic Sans MS", "Chalkboard SE", sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
             padding-bottom: 60px;
         }
 
-        /* Whimsical Header */
         header {
             background: var(--header-bg);
             color: #4a3f35;
             text-align: center;
             padding: 60px 20px;
-            border-bottom: 8px dashed #fff;
+            border-bottom: 8px dashed #ffffff;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         [data-theme="dark"] header {
-            color: #fff;
+            color: #ffffff;
             border-bottom: 8px dashed #3d313e;
         }
 
         header h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 0px #fff;
+            text-shadow: 2px 2px 0px #ffffff;
         }
         [data-theme="dark"] header h1 {
             text-shadow: 2px 2px 0px #2d242e;
@@ -82,7 +77,6 @@
             font-style: italic;
         }
 
-        /* Controls */
         .controls {
             display: flex;
             justify-content: center;
@@ -96,7 +90,7 @@
             width: 100%;
             max-width: 450px;
             border-radius: 30px;
-            border: 3px solid #fff;
+            border: 3px solid #ffffff;
             outline: none;
             font-size: 1.1rem;
             background-color: var(--search-bg);
@@ -126,7 +120,6 @@
             box-shadow: 0 1px 0px #4a3f35;
         }
 
-        /* Main Grid Space */
         .container {
             max-width: 1200px;
             margin: 50px auto;
@@ -139,7 +132,6 @@
             gap: 35px;
         }
 
-        /* Whimsical Bubble Cards */
         .card {
             background: #ffffff;
             border: 4px solid var(--text-main);
@@ -152,7 +144,6 @@
             position: relative;
         }
 
-        /* Assigning colors directly via classes */
         .card.c-pink { background-color: var(--pastel-pink); }
         .card.c-blue { background-color: var(--pastel-blue); }
         .card.c-green { background-color: var(--pastel-green); }
@@ -196,7 +187,6 @@
         .card h2 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            font-family: inherit;
         }
 
         .card p {
@@ -204,7 +194,6 @@
             font-size: 0.95rem;
         }
 
-        /* Whimsical Pop-Up Window */
         .modal {
             position: fixed;
             top: 0;
@@ -268,9 +257,8 @@
             font-size: 1.05rem;
         }
 
-        /* Standalone Fact Box Style */
         .modal-fact-box {
-            background: #fffde7; /* Pastel yellow box */
+            background: #fffde7;
             border: 3px dashed #4a3f35;
             padding: 20px;
             margin-top: 20px;
@@ -299,7 +287,7 @@
         <h1>🌸 FAUNA PLANET 🌸</h1>
         <p>✨ Step into a magical world of wonderful creatures! ✨</p>
         <div class="controls">
-            <input type="text" id="search-bar" placeholder="✨ Search your favorite animals..." onkeyup="filterAnimals()">
+            <input type="text" id="search-bar" placeholder="Search your favorite animals..." onkeyup="filterAnimals()">
             <button class="btn-theme" onclick="toggleTheme()">🌓 Change Skyline</button>
         </div>
     </header>
@@ -307,7 +295,7 @@
     <div class="container">
         <div class="grid" id="animal-grid">
             
-            <div class="card c-pink" onclick="openModal('Axolotl 🇲🇽', 'Amphibian', 'Known as the Mexican walking fish, this smiling water dragon retains its cute feathery gills and larval features its whole life long!', 'Axolotls are real-life superheroes! They can regrow whole limbs, pieces of their spinal cord, eyes, and even parts of their brain perfectly without leaving any scars.')">
+            <div class="card c-pink" onclick="openModal('Axolotl', 'Amphibian', 'Known as the Mexican walking fish, this smiling water dragon retains its cute feathery gills and larval features its whole life long!', 'Axolotls are real-life superheroes! They can regrow whole limbs, pieces of their spinal cord, eyes, and even parts of their brain perfectly.')">
                 <img src="https://images.unsplash.com/photo-1571752726703-5e74ac8691b6?w=500" alt="Axolotl" class="card-img">
                 <div class="card-content">
                     <span class="badge">Amphibian</span>
@@ -316,125 +304,5 @@
                 </div>
             </div>
 
-            <div class="card c-blue" onclick="openModal('Snow Leopard 🏔️', 'Mammal', 'The elusive ghost of the freezing mountains. These big beautiful cats wander around the highest peaks of Central Asia.', 'Snow leopards cannot roar at all! Instead, they express happiness by making a wonderful puffing sound through their nose called a chuff.')">
-                <img src="https://images.unsplash.com/photo-1602491453977-14a38d67e13e?w=500" alt="Snow Leopard" class="card-img">
-                <div class="card-content">
-                    <span class="badge">Mammal</span>
-                    <h2>Snow Leopard</h2>
-                    <p>The soft fluffy master of camouflage living up in the chilly clouds.</p>
-                </div>
-            </div>
-
-            <div class="card c-green" onclick="openModal('Peregrine Falcon 🦅', 'Bird', 'The absolute undisputed speed champion of planet Earth, ruling the open sky like a living jet plane.', 'When executing its majestic hunting dive from the skies, a falcon can fly faster than 200 mph (320 km/h)—making it faster than a real racing car!')">
-                <img src="https://images.unsplash.com/photo-1614093664797-2a54366eb201?w=500" alt="Peregrine Falcon" class="card-img">
-                <div class="card-content">
-                    <span class="badge">Bird</span>
-                    <h2>Peregrine Falcon</h2>
-                    <p>A lightning-fast feathery explorer zooming through the skies.</p>
-                </div>
-            </div>
-
-            <div class="card c-purple" onclick="openModal('Mimic Octopus 🐙', 'Marine Life', 'An incredibly intelligent ocean creature capable of completely impersonating local sea shapes to trick others.', 'It can switch its color, texture, and movement style to instantly look like a venomous lionfish, sea snake, or flatfish based on what predator is nearby!')">
-                <img src="https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?w=500" alt="Mimic Octopus" class="card-img">
-                <div class="card-content">
-                    <span class="badge">Marine Life</span>
-                    <h2>Mimic Octopus</h2>
-                    <p>The salty ocean\'s magical shifting master of disguise.</p>
-                </div>
-            </div>
-
-            <div class="card c-orange" onclick="openModal('Red Panda 🦊', 'Mammal', 'These cinnamon-colored sweethearts live high up in the bamboo forests of the rainy Himalayas.', 'Red pandas use their big, fluffy, ringed tails like cozy winter blankets to keep themselves completely warm during freezing mountain nights!')">
-                <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500" alt="Red Panda" class="card-img">
-                <div class="card-content">
-                    <span class="badge">Mammal</span>
-                    <h2>Red Panda</h2>
-                    <p>A beautiful bamboo-munching acrobat with a fluffy ringed tail.</p>
-                </div>
-            </div>
-
-            <div class="card c-yellow" onclick="openModal('Quokka 🐨', 'Marsupial', 'Hailing from small islands in Western Australia, these cheerful little creatures love exploring and greeting human visitors.', 'Quokkas have earned the title of the happiest animal on Earth because their facial structure makes them look like they are constantly smiling!')">
-                <img src="https://images.unsplash.com/photo-1591586120021-e9843c3ed8bf?w=500" alt="Quokka" class="card-img">
-                <div class="card-content">
-                    <span class="badge">Marsupial</span>
-                    <h2>Quokka</h2>
-                    <p>The legendary tiny animal known globally for its radiant smile.</p>
-                </div>
-            </div>
-
-            <div class="card c-blue" onclick="openModal('Sea Otter 🦦', 'Marine Life', 'Floating along ocean kelp forests, these clever marine mammals spend almost their entire lives chilling in water.', 'To make sure they do not float away into the open ocean while sleeping, sea otters wrap themselves up in kelp blankets or hold hands with each other!')">
-                <img src="https://images.unsplash.com/photo-1615963244664-5b84446e14e6?w=500" alt="Sea Otter" class="card-img">
-                <div class="card-content">
-                    <span class="badge">Marine Life</span>
-                    <h2>Sea Otter</h2>
-                    <p>A clever tool-using swimmer that loves floating along the waves.</p>
-                </div>
-            </div>
-
-            <div class="card c-green" onclick="openModal('Veiled Chameleon 🦎', 'Reptile', 'These slow-moving forest residents possess independently moving eyes and spectacular tongue mechanics.', 'Chameleons do not change colors to match backgrounds! They actually shift shades to regulate body heat or broadcast moods to other chameleons.')">
-                <img src="https://images.unsplash.com/photo-1548247416-ec66f4900b2e?w=500" alt="Chameleon" class="card-img">
-                <div class="card-content">
-                    <span class="badge">Reptile</span>
-                    <h2>Chameleon</h2>
-                    <p>A quirky color-shifting climber with a spectacular scope-eye view.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="modal" id="factModal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeModal(force=true)">🌟</button>
-            <span class="badge" id="modal-badge">Class</span>
-            <h2 id="modal-title">Animal Name</h2>
-            <p id="modal-desc">Description goes here.</p>
-            
-            <div class="modal-fact-box">
-                <strong>🌈 Mind-Blowing Magic Fact:</strong>
-                <p id="modal-fact">Fun fact goes here.</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        }
-
-        function filterAnimals() {
-            const query = document.getElementById('search-bar').value.toLowerCase();
-            const cards = document.getElementsByClassName('card');
-
-            for (let i = 0; i < cards.length; i++) {
-                const title = cards[i].querySelector('h2').innerText.toLowerCase();
-                const badge = cards[i].querySelector('.badge').innerText.toLowerCase();
+            <div class="card c-blue" onclick="openModal('Snow Leopard', 'Mammal', 'The elusive ghost of the freezing mountains. These big beautiful cats wander around the highest peaks of Central Asia.', 'Snow leopards cannot roar at all!
                 
-                if (title.includes(query) || badge.includes(query)) {
-                    cards[i].style.display = "flex";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-        }
-
-        function openModal(name, classification, desc, fact) {
-            document.getElementById('modal-title').innerText = name;
-            document.getElementById('modal-badge').innerText = classification;
-            document.getElementById('modal-desc').innerText = desc;
-            document.getElementById('modal-fact').innerText = fact;
-            document.getElementById('factModal').classList.add('active');
-        }
-
-        function closeModal(event, force=false) {
-            if (force || event.target.classList.contains('modal')) {
-                document.getElementById('factModal').classList.remove('active');
-            }
-        }
-    </script>
-</body>
-</html>
