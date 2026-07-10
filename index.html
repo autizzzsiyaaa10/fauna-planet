@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fauna Explorer</title>
+    <style>
+        /* CSS Variables for Light/Dark Mode Switching */
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --primary: #1b4d3e;
+            --primary-light: #2c6b56;
+            --badge-bg: #e3f2fd;
+            --badge-text: #0d47a1;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --modal-overlay: rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #cbd5e1;
+            --primary: #0f172a;
+            --primary-light: #334155;
+            --badge-bg: #1e1b4b;
+            --badge-text: #818cf8;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --modal-overlay: rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header & Controls */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        #search-bar {
+            padding: 10px 20px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-theme {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-theme:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Layout Grid */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Animal Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.2s ease;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* Fact Pop-Up Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-overlay);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+            padding: 20px;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: var(--text-sub);
+            cursor: pointer;
+        }
+
+        .modal h2 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .modal-fact-box {
+            background: rgba(0,0,0,0.03);
+            border-left: 4px solid var(--badge-text);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        [data-theme="dark"] .modal-fact-box {
+            background: rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FAUNA EXPLORER</h1>
+        <p>Discover the world's most incredible wildlife species</p>
+        <div class="controls">
+            <input type="text" id="search-bar" placeholder="Search animals or classes..." onkeyup="filterAnimals()">
+            <button class="btn-theme" onclick="toggleTheme()">🌓 Toggle Mode</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid" id="animal-grid">
+            
+            <div class="card" onclick="openModal('Axolotl', 'Amphibian', 'Known as the Mexican walking fish, this unique amphibian retains its larval features its entire life and has incredible regenerative abilities.', 'Axolotls can regrow whole limbs, pieces of their spinal cord, eyes, and even parts of their brain safely without leaving any scars!')">
+                <img src="https://images.unsplash.com/photo-1571752726703-5e74ac8691b6?w=500" alt="Axolotl" class="card-img">
+                <div class="card-content">
+                    <span class="badge">Amphibian</span>
+                    <h2>Axolotl</h2>
+                    <p>A fascinating water dragon with legendary healing capabilities.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('Snow Leopard', 'Mammal', 'The ghost of the mountains. These beautiful big cats are perfectly adapted to the harsh, freezing environments of Central Asia.', 'Snow leopards cannot roar due to the physiology of their throats. Instead, they make a non-aggressive puffing sound called a chuff.')">
+                <img src="https://images.unsplash.com/photo-1602491453977-14a38d67e13e?w=500" alt="Snow Leopard" class="card-img">
+                <div class="card-content">
+                    <span class="badge">Mammal</span>
+                    <h2>Snow Leopard</h2>
+                    <p>The elusive master of camouflage living in freezing mountain heights.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('Peregrine Falcon', 'Bird', 'The fastest animal on the planet, capable of reaching extreme speeds during its hunting dive.', 'When diving from high altitudes to strike prey, a Peregrine Falcon can hit speeds over 200 mph (320 km/h)—that is faster than a racecar!')">
+                <img src="https://images.unsplash.com/photo-1614093664797-2a54366eb201?w=500" alt="Peregrine Falcon" class="card-img">
+                <div class="card-content">
+                    <span class="badge">Bird</span>
+                    <h2>Peregrine Falcon</h2>
+                    <p>A lightning-fast apex predator ruling the skies.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('Mimic Octopus', 'Marine Life', 'An incredibly smart cephalopod capable of impersonating local marine species to evade predators.', 'It can shift its shape, skin color, and behavior to turn into sea snakes, lionfish, and flatfish depending on what predator is nearby.')">
+                <img src="https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?w=500" alt="Mimic Octopus" class="card-img">
+                <div class="card-content">
+                    <span class="badge">Marine Life</span>
+                    <h2>Mimic Octopus</h2>
+                    <p>The ocean's shapeshifting master of disguise.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal" id="factModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal(force=true)">&times;</button>
+            <span class="badge" id="modal-badge">Class</span>
+            <h2 id="modal-title">Animal Name</h2>
+            <p id="modal-desc">Description goes here.</p>
+            <div class="modal-fact-box">
+                <strong>Mind-Blowing Fact:</strong>
+                <p id="modal-fact">Fun fact goes here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark Mode Logic
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        // Live Search Filter Logic
+        function filterAnimals() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const cards = document.getElementsByClassName('card');
+
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].querySelector('h2').innerText.toLowerCase();
+                const badge = cards[i].querySelector('.badge').innerText.toLowerCase();
+                
+                if (title.includes(query) || badge.includes(query)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        // Modal Pop-up Logic
+        function openModal(name, classification, desc, fact) {
+            document.getElementById('modal-title').innerText = name;
+            document.getElementById('modal-badge').innerText = classification;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-fact').innerText = fact;
+            document.getElementById('factModal').classList.add('active');
+        }
+
+        function closeModal(event, force=false) {
+            if (force || event.target.classList.contains('modal')) {
+                document.getElementById('factModal').classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
