@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌸 Fauna Planet 🌸</title>
+    <title>🌸 Fauna Planet: Rare Facts 🌸</title>
     <style>
         :root {
             --bg-color: #fcf8f2;
@@ -131,11 +131,13 @@
             background: #ffffff;
             border: 4px solid var(--text-main);
             border-radius: 24px;
-            overflow: hidden;
             box-shadow: 0 8px 0px var(--text-main);
             cursor: pointer;
             display: flex;
             flex-direction: column;
+            padding: 25px;
+            min-height: 200px;
+            justify-content: space-between;
         }
 
         .card.c-pink { background-color: var(--pastel-pink); }
@@ -150,20 +152,6 @@
             box-shadow: 0 16px 0px var(--text-main);
         }
 
-        .card-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-bottom: 4px solid var(--text-main);
-        }
-
-        .card-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
         .badge {
             align-self: flex-start;
             background: #ffffff;
@@ -173,19 +161,19 @@
             border-radius: 15px;
             font-size: 0.85rem;
             font-weight: bold;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             box-shadow: 2px 2px 0px #4a3f35;
         }
 
         .card h2 {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             margin-bottom: 10px;
         }
 
         .card p {
             color: var(--text-sub);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .modal {
@@ -245,7 +233,7 @@
 
         #modal-desc {
             margin-bottom: 20px;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
         .modal-fact-box {
@@ -269,9 +257,9 @@
 
     <header>
         <h1>🌸 FAUNA PLANET 🌸</h1>
-        <p>✨ Step into a magical world of wonderful creatures! ✨</p>
+        <p>✨ A magical encyclopedia of rare creatures & secret facts! ✨</p>
         <div class="controls">
-            <input type="text" id="search-bar" placeholder="Search animals..." onkeyup="filterAnimals()">
+            <input type="text" id="search-bar" placeholder="Search rare animals..." onkeyup="filterAnimals()">
             <button class="btn-theme" onclick="toggleTheme()">🌓 Change Skyline</button>
         </div>
     </header>
@@ -279,54 +267,48 @@
     <div class="container">
         <div class="grid" id="animal-grid">
             
-            <div class="card c-pink" onclick="openModal('Axolotl', 'Amphibian', 'This sweet water dragon keeps its cute feathery gills its whole life long.', 'Axolotls can regrow whole limbs, eyes, and even parts of their brain perfectly without any scarring!')">
-                <img src="https://images.unsplash.com/photo-1571752726703-5e74ac8691b6?w=500" alt="Axolotl" class="card-img">
-                <div class="card-content">
+            <div class="card c-pink" onclick="openModal('Axolotl 🇲🇽', 'Amphibian', 'This sweet water dragon keeps its cute feathery gills its whole life long and never grows up.', 'Axolotls are real life superheroes! They can completely regrow whole limbs, eyes, and even parts of their brain perfectly without any scarring!')">
+                <div>
                     <span class="badge">Amphibian</span>
                     <h2>Axolotl</h2>
                     <p>A bubbly little water dragon with legendary healing capabilities.</p>
                 </div>
             </div>
 
-            <div class="card c-blue" onclick="openModal('Snow Leopard', 'Mammal', 'These big beautiful cats wander around the highest frozen mountain peaks.', 'Snow leopards cannot roar at all! Instead, they make a happy puffing noise called a chuff.')">
-                <img src="https://images.unsplash.com/photo-1602491453977-14a38d67e13e?w=500" alt="Snow Leopard" class="card-img">
-                <div class="card-content">
+            <div class="card c-blue" onclick="openModal('Snow Leopard 🏔️', 'Mammal', 'These big beautiful cats wander around the highest frozen mountain peaks of Asia.', 'Snow leopards cannot roar at all! Instead, they make a wonderful, happy puffing noise through their nose called a chuff.')">
+                <div>
                     <span class="badge">Mammal</span>
                     <h2>Snow Leopard</h2>
-                    <p>The soft fluffy master of camouflage living up in the clouds.</p>
+                    <p>The soft fluffy master of camouflage living up in the cold clouds.</p>
                 </div>
             </div>
 
-            <div class="card c-green" onclick="openModal('Peregrine Falcon', 'Bird', 'The absolute speed champion of planet Earth, zooming like a living jet plane.', 'When diving from the sky, a falcon can fly faster than 200 mph (320 km/h) - faster than a racecar!')">
-                <img src="https://images.unsplash.com/photo-1614093664797-2a54366eb201?w=500" alt="Peregrine Falcon" class="card-img">
-                <div class="card-content">
+            <div class="card c-green" onclick="openModal('Peregrine Falcon 🦅', 'Bird', 'The absolute speed champion of planet Earth, zooming like a living jet plane.', 'When executing its hunting dive from high in the sky, a falcon can fly faster than 200 mph (320 km/h) — making it way faster than a real racecar!')">
+                <div>
                     <span class="badge">Bird</span>
                     <h2>Peregrine Falcon</h2>
                     <p>A lightning-fast feathery explorer zooming through the skies.</p>
                 </div>
             </div>
 
-            <div class="card c-purple" onclick="openModal('Mimic Octopus', 'Marine Life', 'An incredibly smart ocean creature that completely impersonates other sea shapes.', 'It can switch its color and body movement to instantly look like toxic sea snakes or lionfish!')">
-                <img src="https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?w=500" alt="Mimic Octopus" class="card-img">
-                <div class="card-content">
+            <div class="card c-purple" onclick="openModal('Mimic Octopus 🐙', 'Marine Life', 'An incredibly smart ocean creature that completely impersonates other sea shapes to scare away predators.', 'It can switch its skin color, texture, and body movement to instantly look like toxic sea snakes, lionfish, or flatfish!')">
+                <div>
                     <span class="badge">Marine Life</span>
                     <h2>Mimic Octopus</h2>
                     <p>The ocean's magical shifting master of disguise.</p>
                 </div>
             </div>
 
-            <div class="card c-orange" onclick="openModal('Red Panda', 'Mammal', 'These cinnamon-colored sweethearts live high up in the rainy bamboo forests.', 'Red pandas use their big fluffy tails like cozy winter blankets to keep warm on freezing nights!')">
-                <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=500" alt="Red Panda" class="card-img">
-                <div class="card-content">
+            <div class="card c-orange" onclick="openModal('Red Panda 🦊', 'Mammal', 'These cinnamon-colored sweethearts live high up in the rainy bamboo forests.', 'Red pandas use their huge, fluffy, ringed tails like cozy winter blankets to wrap around their faces and stay warm on freezing nights!')">
+                <div>
                     <span class="badge">Mammal</span>
                     <h2>Red Panda</h2>
-                    <p>A beautiful bamboo-munching acrobat with a fluffy tail.</p>
+                    <p>A beautiful bamboo-munching acrobat with a fluffy ringed tail.</p>
                 </div>
             </div>
 
-            <div class="card c-yellow" onclick="openModal('Quokka', 'Marsupial', 'These cheerful creatures love exploring and greeting human friends.', 'Quokkas look like they are constantly smiling because of their unique facial jaw structure!')">
-                <img src="https://images.unsplash.com/photo-1591586120021-e9843c3ed8bf?w=500" alt="Quokka" class="card-img">
-                <div class="card-content">
+            <div class="card c-yellow" onclick="openModal('Quokka 🐨', 'Marsupial', 'Hailing from tiny islands in Western Australia, these cheerful creatures love exploring and meeting human friends.', 'Quokkas look like they are constantly smiling because their unique jaw and facial structure naturally curves upward!')">
+                <div>
                     <span class="badge">Marsupial</span>
                     <h2>Quokka</h2>
                     <p>The legendary tiny animal known globally for its radiant smile.</p>
