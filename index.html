@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fauna Planet</title>
+    <title>🌸 Fauna Planet 🌸</title>
     <style>
         :root {
             --bg-color: #fcf8f2;
@@ -279,7 +279,7 @@
     <div class="container">
         <div class="grid" id="animal-grid">
             
-            <div class="card c-pink" onclick="openModal('Axolotl', 'Amphibian', 'This water dragon keeps its feathery gills its whole life long.', 'Axolotls can regrow whole limbs, eyes, and even parts of their brain perfectly.')">
+            <div class="card c-pink" onclick="openModal('Axolotl', 'Amphibian', 'This sweet water dragon keeps its cute feathery gills its whole life long.', 'Axolotls can regrow whole limbs, eyes, and even parts of their brain perfectly without any scarring!')">
                 <img src="https://images.unsplash.com/photo-1571752726703-5e74ac8691b6?w=500" alt="Axolotl" class="card-img">
                 <div class="card-content">
                     <span class="badge">Amphibian</span>
@@ -288,7 +288,7 @@
                 </div>
             </div>
 
-            <div class="card c-blue" onclick="openModal('Snow Leopard', 'Mammal', 'These big beautiful cats wander around the highest frozen peaks.', 'Snow leopards cannot roar at all. Instead, they make a puffing noise called a chuff.')">
+            <div class="card c-blue" onclick="openModal('Snow Leopard', 'Mammal', 'These big beautiful cats wander around the highest frozen mountain peaks.', 'Snow leopards cannot roar at all! Instead, they make a happy puffing noise called a chuff.')">
                 <img src="https://images.unsplash.com/photo-1602491453977-14a38d67e13e?w=500" alt="Snow Leopard" class="card-img">
                 <div class="card-content">
                     <span class="badge">Mammal</span>
@@ -297,7 +297,7 @@
                 </div>
             </div>
 
-            <div class="card c-green" onclick="openModal('Peregrine Falcon', 'Bird', 'The absolute speed champion of planet Earth.', 'When diving from the sky, a falcon can fly faster than 200 mph.')">
+            <div class="card c-green" onclick="openModal('Peregrine Falcon', 'Bird', 'The absolute speed champion of planet Earth, zooming like a living jet plane.', 'When diving from the sky, a falcon can fly faster than 200 mph (320 km/h) - faster than a racecar!')">
                 <img src="https://images.unsplash.com/photo-1614093664797-2a54366eb201?w=500" alt="Peregrine Falcon" class="card-img">
                 <div class="card-content">
                     <span class="badge">Bird</span>
@@ -306,7 +306,7 @@
                 </div>
             </div>
 
-            <div class="card c-purple" onclick="openModal('Mimic Octopus', 'Marine Life', 'An ocean creature that completely impersonates other sea shapes.', 'It can switch its color and movement to look like sea snakes or lionfish.')">
+            <div class="card c-purple" onclick="openModal('Mimic Octopus', 'Marine Life', 'An incredibly smart ocean creature that completely impersonates other sea shapes.', 'It can switch its color and body movement to instantly look like toxic sea snakes or lionfish!')">
                 <img src="https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?w=500" alt="Mimic Octopus" class="card-img">
                 <div class="card-content">
                     <span class="badge">Marine Life</span>
@@ -315,8 +315,8 @@
                 </div>
             </div>
 
-            <div class="card c-orange" onclick="openModal('Red Panda', 'Mammal', 'These sweethearts live high up in the bamboo forests.', 'Red pandas use their big fluffy tails like cozy blankets during freezing nights.')">
-                <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500" alt="Red Panda" class="card-img">
+            <div class="card c-orange" onclick="openModal('Red Panda', 'Mammal', 'These cinnamon-colored sweethearts live high up in the rainy bamboo forests.', 'Red pandas use their big fluffy tails like cozy winter blankets to keep warm on freezing nights!')">
+                <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=500" alt="Red Panda" class="card-img">
                 <div class="card-content">
                     <span class="badge">Mammal</span>
                     <h2>Red Panda</h2>
@@ -324,7 +324,7 @@
                 </div>
             </div>
 
-            <div class="card c-yellow" onclick="openModal('Quokka', 'Marsupial', 'These cheerful creatures love greeting human visitors.', 'Quokkas look like they are constantly smiling because of their jaw shape.')">
+            <div class="card c-yellow" onclick="openModal('Quokka', 'Marsupial', 'These cheerful creatures love exploring and greeting human friends.', 'Quokkas look like they are constantly smiling because of their unique facial jaw structure!')">
                 <img src="https://images.unsplash.com/photo-1591586120021-e9843c3ed8bf?w=500" alt="Quokka" class="card-img">
                 <div class="card-content">
                     <span class="badge">Marsupial</span>
@@ -338,7 +338,7 @@
 
     <div class="modal" id="factModal" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeModal(true)">🌟</button>
+            <button class="close-btn" onclick="closeModal(null, true)">🌟</button>
             <span class="badge" id="modal-badge">Class</span>
             <h2 id="modal-title">Animal Name</h2>
             <p id="modal-desc">Description goes here.</p>
@@ -380,8 +380,10 @@
             document.getElementById('factModal').classList.add('active');
         }
 
-        function closeModal(force) {
-            document.getElementById('factModal').classList.remove('active');
+        function closeModal(event, force = false) {
+            if (force || (event && event.target.classList.contains('modal'))) {
+                document.getElementById('factModal').classList.remove('active');
+            }
         }
     </script>
 </body>
