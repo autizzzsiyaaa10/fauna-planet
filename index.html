@@ -3,150 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fauna Explorer</title>
+    <title>✨ Fauna Planet: The Whimsical Menagerie ✨</title>
     <style>
-        /* CSS Variables for Light/Dark Mode Switching */
+        /* Pastel Storybook Palette */
         :root {
-            --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
-            --text-main: #333333;
-            --text-sub: #666666;
-            --primary: #1b4d3e;
-            --primary-light: #2c6b56;
-            --badge-bg: #e3f2fd;
-            --badge-text: #0d47a1;
-            --shadow: rgba(0, 0, 0, 0.05);
-            --modal-overlay: rgba(0, 0, 0, 0.5);
+            --bg-color: #fcf8f2; /* Soft warm cream */
+            --header-bg: linear-gradient(135deg, #ffd3b6, #ffaaa5, #dcedc1); /* Pastel sunset rainbow */
+            --text-main: #4a3f35; /* Soft cozy brown instead of harsh black */
+            --text-sub: #7a6e67;
+            --search-bg: #ffffff;
+            --modal-overlay: rgba(74, 63, 53, 0.4);
+            
+            /* Card Specific Pastels */
+            --pastel-pink: #ffebef;
+            --pastel-blue: #e3f2fd;
+            --pastel-green: #e8f5e9;
+            --pastel-purple: #f3e5f5;
+            --pastel-yellow: #fffde7;
+            --pastel-orange: #fff3e0;
         }
 
         [data-theme="dark"] {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-sub: #cbd5e1;
-            --primary: #0f172a;
-            --primary-light: #334155;
-            --badge-bg: #1e1b4b;
-            --badge-text: #818cf8;
-            --shadow: rgba(0, 0, 0, 0.3);
-            --modal-overlay: rgba(0, 0, 0, 0.8);
+            --bg-color: #2d242e; /* Cozy twilight purple */
+            --header-bg: linear-gradient(135deg, #4831d4, #cc5a71, #f9a826);
+            --text-main: #fcf8f2;
+            --text-sub: #d1c7bd;
+            --search-bg: #3d313e;
+            
+            --pastel-pink: #4a343c;
+            --pastel-blue: #2c3e50;
+            --pastel-green: #27382b;
+            --pastel-purple: #3d2c3e;
+            --pastel-yellow: #46442b;
+            --pastel-orange: #46372b;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Fredoka One', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
+            padding-bottom: 60px;
         }
 
-        /* Header & Controls */
+        /* Whimsical Header */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+            background: var(--header-bg);
+            color: #4a3f35;
             text-align: center;
-            padding: 50px 20px;
-            position: relative;
+            padding: 60px 20px;
+            border-bottom: 8px dashed #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        [data-theme="dark"] header {
+            color: #fff;
+            border-bottom: 8px dashed #3d313e;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+            font-size: 3rem;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 0px #fff;
+        }
+        [data-theme="dark"] header h1 {
+            text-shadow: 2px 2px 0px #2d242e;
         }
 
+        header p {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Controls */
         .controls {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 25px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
 
         #search-bar {
-            padding: 10px 20px;
+            padding: 12px 25px;
             width: 100%;
-            max-width: 400px;
-            border-radius: 50px;
-            border: none;
+            max-width: 450px;
+            border-radius: 30px;
+            border: 3px solid #fff;
             outline: none;
-            font-size: 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            background-color: var(--search-bg);
+            color: var(--text-main);
+            box-shadow: 0 6px 0px rgba(0,0,0,0.05);
         }
 
         .btn-theme {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255,255,255,0.4);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
+            background: #ffffff;
+            border: 3px solid #4a3f35;
+            color: #4a3f35;
+            padding: 10px 25px;
+            border-radius: 30px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 0px #4a3f35;
         }
 
         .btn-theme:hover {
-            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 0px #4a3f35;
         }
 
-        /* Layout Grid */
+        .btn-theme:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0px #4a3f35;
+        }
+
+        /* Main Grid Space */
         .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 25px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
         }
 
-        /* Animal Cards */
+        /* Whimsical Bubble Cards */
         .card {
-            background: var(--card-bg);
-            border-radius: 12px;
+            background: #ffffff;
+            border: 4px solid var(--text-main);
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 4px 15px var(--shadow);
+            box-shadow: 0 8px 0px var(--text-main);
             cursor: pointer;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
+        /* Assigning colors directly via classes */
+        .card.c-pink { background-color: var(--pastel-pink); }
+        .card.c-blue { background-color: var(--pastel-blue); }
+        .card.c-green { background-color: var(--pastel-green); }
+        .card.c-purple { background-color: var(--pastel-purple); }
+        .card.c-yellow { background-color: var(--pastel-yellow); }
+        .card.c-orange { background-color: var(--pastel-orange); }
+
         .card:hover {
-            transform: translateY(-5px);
-            transition: transform 0.2s ease;
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: 0 16px 0px var(--text-main);
         }
 
         .card-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
+            border-bottom: 4px solid var(--text-main);
         }
 
         .card-content {
-            padding: 25px;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .badge {
-            display: inline-block;
-            background: var(--badge-bg);
-            color: var(--badge-text);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            align-self: flex-start;
+            background: #ffffff;
+            color: #4a3f35;
+            border: 2px solid #4a3f35;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
             font-weight: bold;
             margin-bottom: 12px;
             text-transform: uppercase;
+            box-shadow: 2px 2px 0px #4a3f35;
         }
 
         .card h2 {
+            font-size: 1.5rem;
             margin-bottom: 10px;
+            font-family: inherit;
         }
 
         .card p {
@@ -154,7 +204,7 @@
             font-size: 0.95rem;
         }
 
-        /* Fact Pop-Up Modal */
+        /* Whimsical Pop-Up Window */
         .modal {
             position: fixed;
             top: 0;
@@ -167,9 +217,9 @@
             align-items: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
             z-index: 100;
             padding: 20px;
+            backdrop-filter: blur(4px);
         }
 
         .modal.active {
@@ -178,97 +228,154 @@
         }
 
         .modal-content {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 16px;
-            max-width: 500px;
+            background: #ffffff;
+            border: 5px solid #4a3f35;
+            padding: 35px;
+            border-radius: 32px;
+            max-width: 550px;
             width: 100%;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 0px #4a3f35;
+            transform: scale(0.7) rotate(-2deg);
         }
 
         .modal.active .modal-content {
-            transform: scale(1);
+            transform: scale(1) rotate(0deg);
         }
 
         .close-btn {
             position: absolute;
             top: 15px;
             right: 20px;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             background: none;
             border: none;
-            color: var(--text-sub);
+            color: #4a3f35;
             cursor: pointer;
+        }
+        .close-btn:hover {
+            transform: scale(1.2);
         }
 
         .modal h2 {
+            margin-top: 10px;
             margin-bottom: 15px;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
         }
 
-        .modal-fact-box {
-            background: rgba(0,0,0,0.03);
-            border-left: 4px solid var(--badge-text);
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 4px;
-            font-style: italic;
+        #modal-desc {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
         }
-        [data-theme="dark"] .modal-fact-box {
-            background: rgba(255,255,255,0.05);
+
+        /* Standalone Fact Box Style */
+        .modal-fact-box {
+            background: #fffde7; /* Pastel yellow box */
+            border: 3px dashed #4a3f35;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 18px;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .modal-fact-box strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #b15b00;
+            margin-bottom: 6px;
+        }
+
+        .modal-fact-box p {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #4a3f35;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>FAUNA EXPLORER</h1>
-        <p>Discover the world's most incredible wildlife species</p>
+        <h1>🌸 FAUNA PLANET 🌸</h1>
+        <p>✨ Step into a magical world of wonderful creatures! ✨</p>
         <div class="controls">
-            <input type="text" id="search-bar" placeholder="Search animals or classes..." onkeyup="filterAnimals()">
-            <button class="btn-theme" onclick="toggleTheme()">🌓 Toggle Mode</button>
+            <input type="text" id="search-bar" placeholder="✨ Search your favorite animals..." onkeyup="filterAnimals()">
+            <button class="btn-theme" onclick="toggleTheme()">🌓 Change Skyline</button>
         </div>
     </header>
 
     <div class="container">
         <div class="grid" id="animal-grid">
             
-            <div class="card" onclick="openModal('Axolotl', 'Amphibian', 'Known as the Mexican walking fish, this unique amphibian retains its larval features its entire life and has incredible regenerative abilities.', 'Axolotls can regrow whole limbs, pieces of their spinal cord, eyes, and even parts of their brain safely without leaving any scars!')">
+            <div class="card c-pink" onclick="openModal('Axolotl 🇲🇽', 'Amphibian', 'Known as the Mexican walking fish, this smiling water dragon retains its cute feathery gills and larval features its whole life long!', 'Axolotls are real-life superheroes! They can regrow whole limbs, pieces of their spinal cord, eyes, and even parts of their brain perfectly without leaving any scars.')">
                 <img src="https://images.unsplash.com/photo-1571752726703-5e74ac8691b6?w=500" alt="Axolotl" class="card-img">
                 <div class="card-content">
                     <span class="badge">Amphibian</span>
                     <h2>Axolotl</h2>
-                    <p>A fascinating water dragon with legendary healing capabilities.</p>
+                    <p>A bubbly little water dragon with legendary healing capabilities.</p>
                 </div>
             </div>
 
-            <div class="card" onclick="openModal('Snow Leopard', 'Mammal', 'The ghost of the mountains. These beautiful big cats are perfectly adapted to the harsh, freezing environments of Central Asia.', 'Snow leopards cannot roar due to the physiology of their throats. Instead, they make a non-aggressive puffing sound called a chuff.')">
+            <div class="card c-blue" onclick="openModal('Snow Leopard 🏔️', 'Mammal', 'The elusive ghost of the freezing mountains. These big beautiful cats wander around the highest peaks of Central Asia.', 'Snow leopards cannot roar at all! Instead, they express happiness by making a wonderful puffing sound through their nose called a chuff.')">
                 <img src="https://images.unsplash.com/photo-1602491453977-14a38d67e13e?w=500" alt="Snow Leopard" class="card-img">
                 <div class="card-content">
                     <span class="badge">Mammal</span>
                     <h2>Snow Leopard</h2>
-                    <p>The elusive master of camouflage living in freezing mountain heights.</p>
+                    <p>The soft fluffy master of camouflage living up in the chilly clouds.</p>
                 </div>
             </div>
 
-            <div class="card" onclick="openModal('Peregrine Falcon', 'Bird', 'The fastest animal on the planet, capable of reaching extreme speeds during its hunting dive.', 'When diving from high altitudes to strike prey, a Peregrine Falcon can hit speeds over 200 mph (320 km/h)—that is faster than a racecar!')">
+            <div class="card c-green" onclick="openModal('Peregrine Falcon 🦅', 'Bird', 'The absolute undisputed speed champion of planet Earth, ruling the open sky like a living jet plane.', 'When executing its majestic hunting dive from the skies, a falcon can fly faster than 200 mph (320 km/h)—making it faster than a real racing car!')">
                 <img src="https://images.unsplash.com/photo-1614093664797-2a54366eb201?w=500" alt="Peregrine Falcon" class="card-img">
                 <div class="card-content">
                     <span class="badge">Bird</span>
                     <h2>Peregrine Falcon</h2>
-                    <p>A lightning-fast apex predator ruling the skies.</p>
+                    <p>A lightning-fast feathery explorer zooming through the skies.</p>
                 </div>
             </div>
 
-            <div class="card" onclick="openModal('Mimic Octopus', 'Marine Life', 'An incredibly smart cephalopod capable of impersonating local marine species to evade predators.', 'It can shift its shape, skin color, and behavior to turn into sea snakes, lionfish, and flatfish depending on what predator is nearby.')">
+            <div class="card c-purple" onclick="openModal('Mimic Octopus 🐙', 'Marine Life', 'An incredibly intelligent ocean creature capable of completely impersonating local sea shapes to trick others.', 'It can switch its color, texture, and movement style to instantly look like a venomous lionfish, sea snake, or flatfish based on what predator is nearby!')">
                 <img src="https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?w=500" alt="Mimic Octopus" class="card-img">
                 <div class="card-content">
                     <span class="badge">Marine Life</span>
                     <h2>Mimic Octopus</h2>
-                    <p>The ocean's shapeshifting master of disguise.</p>
+                    <p>The salty ocean\'s magical shifting master of disguise.</p>
+                </div>
+            </div>
+
+            <div class="card c-orange" onclick="openModal('Red Panda 🦊', 'Mammal', 'These cinnamon-colored sweethearts live high up in the bamboo forests of the rainy Himalayas.', 'Red pandas use their big, fluffy, ringed tails like cozy winter blankets to keep themselves completely warm during freezing mountain nights!')">
+                <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500" alt="Red Panda" class="card-img">
+                <div class="card-content">
+                    <span class="badge">Mammal</span>
+                    <h2>Red Panda</h2>
+                    <p>A beautiful bamboo-munching acrobat with a fluffy ringed tail.</p>
+                </div>
+            </div>
+
+            <div class="card c-yellow" onclick="openModal('Quokka 🐨', 'Marsupial', 'Hailing from small islands in Western Australia, these cheerful little creatures love exploring and greeting human visitors.', 'Quokkas have earned the title of the happiest animal on Earth because their facial structure makes them look like they are constantly smiling!')">
+                <img src="https://images.unsplash.com/photo-1591586120021-e9843c3ed8bf?w=500" alt="Quokka" class="card-img">
+                <div class="card-content">
+                    <span class="badge">Marsupial</span>
+                    <h2>Quokka</h2>
+                    <p>The legendary tiny animal known globally for its radiant smile.</p>
+                </div>
+            </div>
+
+            <div class="card c-blue" onclick="openModal('Sea Otter 🦦', 'Marine Life', 'Floating along ocean kelp forests, these clever marine mammals spend almost their entire lives chilling in water.', 'To make sure they do not float away into the open ocean while sleeping, sea otters wrap themselves up in kelp blankets or hold hands with each other!')">
+                <img src="https://images.unsplash.com/photo-1615963244664-5b84446e14e6?w=500" alt="Sea Otter" class="card-img">
+                <div class="card-content">
+                    <span class="badge">Marine Life</span>
+                    <h2>Sea Otter</h2>
+                    <p>A clever tool-using swimmer that loves floating along the waves.</p>
+                </div>
+            </div>
+
+            <div class="card c-green" onclick="openModal('Veiled Chameleon 🦎', 'Reptile', 'These slow-moving forest residents possess independently moving eyes and spectacular tongue mechanics.', 'Chameleons do not change colors to match backgrounds! They actually shift shades to regulate body heat or broadcast moods to other chameleons.')">
+                <img src="https://images.unsplash.com/photo-1548247416-ec66f4900b2e?w=500" alt="Chameleon" class="card-img">
+                <div class="card-content">
+                    <span class="badge">Reptile</span>
+                    <h2>Chameleon</h2>
+                    <p>A quirky color-shifting climber with a spectacular scope-eye view.</p>
                 </div>
             </div>
 
@@ -277,19 +384,19 @@
 
     <div class="modal" id="factModal" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeModal(force=true)">&times;</button>
+            <button class="close-btn" onclick="closeModal(force=true)">🌟</button>
             <span class="badge" id="modal-badge">Class</span>
             <h2 id="modal-title">Animal Name</h2>
             <p id="modal-desc">Description goes here.</p>
+            
             <div class="modal-fact-box">
-                <strong>Mind-Blowing Fact:</strong>
+                <strong>🌈 Mind-Blowing Magic Fact:</strong>
                 <p id="modal-fact">Fun fact goes here.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Dark Mode Logic
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             if (currentTheme === 'dark') {
@@ -299,7 +406,6 @@
             }
         }
 
-        // Live Search Filter Logic
         function filterAnimals() {
             const query = document.getElementById('search-bar').value.toLowerCase();
             const cards = document.getElementsByClassName('card');
@@ -316,7 +422,6 @@
             }
         }
 
-        // Modal Pop-up Logic
         function openModal(name, classification, desc, fact) {
             document.getElementById('modal-title').innerText = name;
             document.getElementById('modal-badge').innerText = classification;
@@ -333,5 +438,3 @@
     </script>
 </body>
 </html>
-
-     
